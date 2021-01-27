@@ -11,12 +11,15 @@ function CApp({Component, pageProps}){
 } 
 
 
-CApp.getInitialProps = async ({Component, ctx}) => {
+
+export default CApp;
+
+export const getServerSideProps = async ({Component, ctx}) => {
     let pageProps = {}
     if (Component.getInitialProps) {// 执行当前页面的getInitialProps
-      let data = await Component.getInitialProps(ctx)
+      let data = await Component.getServerSideProps(ctx)
       pageProps = {...data}
     }
     return {pageProps}
 }
-export default CApp;
+

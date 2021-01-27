@@ -14,9 +14,7 @@ import { APIType } from "../decorator";
  * @returns 
  */
 export default  (handler)=>async (ctx, next)=>{
-    console.log(ctx);
     const type =  handler.type;
-    console.log(type);
 
         
     const {params,query,body}=ctx;
@@ -24,14 +22,9 @@ export default  (handler)=>async (ctx, next)=>{
 
     // eslint-disable-next-line no-restricted-syntax
     const ret = await handler(paramsAll, ctx);
-  
     log.info('Response:',JSON.stringify(ret));
-    // if(!ret) 
-        // log.error(requestId,'You should have return value for this method',handler);
     ctx.res.status = HttpStatus.OK;
-    console.log(ret);
     ctx.body = ret;
-    // ctx.respond = false;
 };
 
 

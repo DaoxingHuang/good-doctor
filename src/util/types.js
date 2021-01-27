@@ -6,5 +6,7 @@ export const SharePrinciples = {
 
 export const ShareParams = {
     Title:'t',
-    Principle:'p'
+    Principle:'p',
+    ID:'i',
+    DESC:'d'
 }

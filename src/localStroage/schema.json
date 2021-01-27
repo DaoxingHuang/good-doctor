@@ -1,0 +1,9 @@
+[
+    {
+        "id":1,
+        "country": "id",
+        "schema":"gdind://com.pajk.idpersonaldoctor/plugin-share",
+        "ios":"https://itunes.apple.com/app/id1531980757",
+        "android":"https://play.google.com/store/apps/detao;s?id=com.pajk.idpersonaldoc"
+    }
+]

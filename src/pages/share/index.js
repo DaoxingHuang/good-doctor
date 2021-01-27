@@ -1,97 +1,66 @@
 import Link from 'next/link';
 import Head from "next/head";
+import { } from "next/document";
 import Layout from "../components/layout";
 import { Component, useEffect } from 'react';
 import { SharePrinciples, ShareParams } from "../../util/types";
-import { wait } from 'next/dist/build/output/log';
+import Schema from "../../config/schema";
+import { openApp } from "../../mobile/evocation";
+import { useRouter } from 'next/router'
 
 /**
  * 
- * 
+ * Share page
  * @param {Object} props
  * @example
  * <meta property="og:title" content="Kebanyakan Olahraga Bisa Berbahaya, Ini 7 Efek Buruknya bagi Tubuh!">
  * @return {Component} 
  */
 
- export default class Share extends Component{
+function Share(props) {
 
-  static getInitialProps = async ctx => {
-    // const appProps = await App.getInitialProps(appContext)
-    const query = ctx.query;
-    console.log(133, query);
-    const p = query[ShareParams.Principle]||SharePrinciples.OG;
-    const t = query[ShareParams.Title];
-    console.log(133, query, p, t);
-    delete query[ShareParams.Principle];
-    delete query[ShareParams.Title];
-    console.log(133, query, p, t);
-    // const res = await fetch('https://api.github.com/repos/vercel/next.js')
-    // const json = await res.json()
-    // const pp = new Promise.resolve({title:t, principles: p.split(','), metas: {...query, title:t}})
-    return  {title:t, principles: p.split(','), metas: {...query, title:t}}
-    // return  await setTimeout(()=>{
-    //     {title:t, principles: p.split(','), metas: {...query, title:t}};
-    // },0);
-  };
-  
-  //  useEffect(()=>{
-  //         console.log('share:',this.props)
-  //   },[])
+  const router = useRouter()
 
-    render(){
-      console.log('share:',this.props)
-      return (
-        <Layout>
-            <Head>
-              {this.props.metas && this.props.principles.map(item=>{
-                  const metas = Object.keys(this.props.metas).map(key=>{
-                    return <meta property={`${item}:${key}`} content={this.props.metas[key]}></meta>
-                  });
-                  console.log('metas:',metas)
-                  return metas;
-              })}
-              <title>{this.props.title}</title>
-            </Head>
-        </Layout>
-      )
-    }
- }
-// function Share(props) {
-//   useEffect(()=>{
-//       console.log('share:',props)
-//   },[])
-//   return (
-//     <Layout>
-//         <Head>
-//           {/* {props.metas && props.principles.map(item=>{
-//             debugger;
-//               Object.keys(props.metas).map(key=>{
-//                 return <meta property={`${item}:${key}`} content={props.metas[key]}></meta>
-//               });
-//           })} */}
-//           <title>{props.title}</title>
-//         </Head>
-//     </Layout>
-//   )
-// }
-// Share.getInitialProps =  ctx => {
-//   return {a:123};
-//   // const appProps = await App.getInitialProps(appContext)
-//   const query = ctx.query;
-//   console.log(133, query);
-//   const p = query[ShareParams.Principle]||SharePrinciples.OG;
-//   const t = query[ShareParams.Title];
-//   console.log(133, query, p, t);
-//   delete query[ShareParams.Principle];
-//   delete query[ShareParams.Title];
-//   console.log(133, query, p, t);
-//   // const res = await fetch('https://api.github.com/repos/vercel/next.js')
-//   // const json = await res.json()
-//   // const pp = new Promise.resolve({title:t, principles: p.split(','), metas: {...query, title:t}})
-//   return {title:t, principles: p.split(','), metas: {...query, title:t}}
-//   // return  await setTimeout(()=>{
-//   //     {title:t, principles: p.split(','), metas: {...query, title:t}};
-//   // },0);
-// }
-// export default Share;
+  useEffect(()=>{
+    const {schema} = props;
+    schema && openApp(schema);
+    !schema && router.push('/404');
+  },[])
+  return (
+    <>
+        <Head>
+          {props.metas && props.principles.map(item=>{
+              const metas = Object.keys(props.metas).map(key=>{
+                return <meta property={`${item}:${key}`} content={props.metas[key]}></meta>
+              });
+              return metas;
+          })}
+          {/* <meta property="og:title" content="Title Here" />
+          <meta property="og:url" content="http://www.example.com/" />
+          <meta property="og:image" content="http://example.com/image.jpg" />
+          <meta property="og:description" content="Description Here" /> */}
+          <title>{props.title}</title>
+        </Head>
+        <div>{props.description}</div>
+    </>
+  )
+}
+export default Share;
+
+export const getServerSideProps =  ctx => {
+  const query = ctx.query;
+  const p = query[ShareParams.Principle]||SharePrinciples.OG;
+  const t = query[ShareParams.Title];
+  const id = query[ShareParams.ID];
+  const desc = query[ShareParams.DESC]
+  delete query[ShareParams.Principle];
+  delete query[ShareParams.Title];
+  delete query[ShareParams.ID];
+  delete query[ShareParams.DESC];
+
+  const schemas = ctx.req.state.loaclMemory.schemaConfig||[];
+  const schema = schemas.find(item=>item.id == id);
+
+  return {props :{title:t, principles: p.split(','),description:desc, metas: {...query, title:t, description:desc}, schema}}
+}
+

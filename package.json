@@ -6,6 +6,7 @@
   "dependencies": {
     "hexo-util": "^2.4.0",
     "http-status-codes": "^2.1.4",
+    "jsonfile": "^6.1.0",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-compress": "^5.0.1",

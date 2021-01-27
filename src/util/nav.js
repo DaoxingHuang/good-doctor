@@ -6,8 +6,8 @@
  * @namespace {Util}
  * @export
  */
-export function deviceBrowser = ()=>{
-    const ua = getUA();
+export const deviceBrowser = ()=>{
+    const u = getUA();
     return {
         trident: u.indexOf('Trident') > -1,  //IE
         presto: u.indexOf('Presto') > -1,  //opera
@@ -30,6 +30,6 @@ export function deviceBrowser = ()=>{
  * @export
  * @return {Object} user agent value
  */
-export function getUA{
+export function getUA() {
     return window && window.navigator.userAgent;
 }
