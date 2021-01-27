@@ -1,0 +1,42 @@
+{
+  "name": "share",
+  "version": "1.0.0",
+  "description": "用于分享",
+  "main": "index.js",
+  "dependencies": {
+    "hexo-util": "^2.4.0",
+    "http-status-codes": "^2.1.4",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-compress": "^5.0.1",
+    "koa-router": "^10.0.0",
+    "log4js": "^6.3.0",
+    "next": "^10.0.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-decorators": "^7.12.12",
+    "@babel/plugin-transform-async-to-generator": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/register": "^7.12.10",
+    "koa-bodyparser": "^4.3.0",
+    "koa-compress": "^5.0.1"
+  },
+  "scripts": {
+    "start": "node --require @babel/register src/dev.js",
+    "build": "next build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "share"
+  ],
+  "author": "Daoxing.Huang",
+  "license": "MIT"
+}
