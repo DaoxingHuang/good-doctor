@@ -1,8 +1,8 @@
 /**
  * Author:Daoxing.Huang
  * 平台日记配置，使用Log4js @see {@link https://github.com/log4js-node/log4js-node}
- * log4js的输出级别6个: trace, debug, info, warn, error, fatal,还有一个mark，没有看说明 
- * 
+ * log4js的输出级别6个: trace, debug, info, warn, error, fatal,还有一个mark，没有看说明
+ *
  * 类别说明 使用规则：
  * 对于日志级别的分类，有以下参考@see {@link https://zhuanlan.zhihu.com/p/27363484}：
  * FATAL — 表示需要立即被处理的系统级错误。当该错误发生时，表示服务已经出现了某种程度的不可用，
@@ -29,78 +29,77 @@
  * 应该保证除了记录日志的开发人员自己外，其他的如运维，测试人员等也可以通过 DEBUG（或TRACE）日志来定位问题；
  */
 
-import log4js from "log4js";
-import {join} from 'path';
-import { isDevelopment } from "./env";
+import log4js from 'log4js';
+import { join } from 'path';
+import { isDevelopment } from './env';
 // log4js的输出级别6个: trace, debug, info, warn, error, fatal
-log4js.addLayout('requestId',(config)=>(logEvent) => config.requestId+JSON.stringify(logEvent));
+log4js.addLayout('requestId', config => logEvent => config.requestId + JSON.stringify(logEvent));
 
 log4js.configure({
-    // 输出位置的基本信息设置
-    appenders: {
-        // 设置控制台输出 （默认日志级别是关闭的（即不会输出日志））
-        out: {
-            type: "console",
-        },
-        // 设置每天：以日期为单位,数据文件类型，dataFiel   注意设置pattern，alwaysIncludePattern属性
-        // allLog: { type: 'dateFile', filename: './log/all', pattern: '-yyyy-MM-dd.log', alwaysIncludePattern: true },
-
-        // 所有日志记录，文件类型file   文件最大值maxLogSize 单位byte (B->KB->M) backups:备份的文件个数最大值,最新数据覆盖旧数据
-        allLog: {
-            type: "file",
-            filename: join(__dirname,("../../log/all.log")),
-            keepFileExt: true,
-            maxLogSize: 10485760,
-            backups: 3,
-        },
-
-        // http请求日志 
-        httpLog: {
-            type: "file",
-            filename: join(__dirname,("../../log/http.log")),
-            pattern: ".yyyy-MM-dd-hh",
-            keepFileExt: true,
-            maxLogSize: 10485760,
-            backups:5
-        },
-
-        // 错误日志 type:过滤类型logLevelFilter,将过滤error日志写进指定文件
-        errorLog: {
-            type: "file",
-            filename: join(__dirname,("../../log/error.log")),
-        },
-
-        error: {
-            type: "logLevelFilter",
-            level: "error",
-            appender: "errorLog",
-        },
+  // 输出位置的基本信息设置
+  appenders: {
+    // 设置控制台输出 （默认日志级别是关闭的（即不会输出日志））
+    out: {
+      type: 'console',
     },
-    // 不同等级的日志追加到不同的输出位置：appenders: ['out', 'allLog']  
-    // categories 作为getLogger方法的键名对应
-    categories: {
+    // 设置每天：以日期为单位,数据文件类型，dataFiel   注意设置pattern，alwaysIncludePattern属性
+    // allLog: { type: 'dateFile', filename: './log/all', pattern: '-yyyy-MM-dd.log', alwaysIncludePattern: true },
+
+    // 所有日志记录，文件类型file   文件最大值maxLogSize 单位byte (B->KB->M) backups:备份的文件个数最大值,最新数据覆盖旧数据
+    allLog: {
+      type: 'file',
+      filename: join(__dirname, '../../log/all.log'),
+      keepFileExt: true,
+      maxLogSize: 10485760,
+      backups: 3,
+    },
+
+    // http请求日志
+    httpLog: {
+      type: 'file',
+      filename: join(__dirname, '../../log/http.log'),
+      pattern: '.yyyy-MM-dd-hh',
+      keepFileExt: true,
+      maxLogSize: 10485760,
+      backups: 5,
+    },
+
+    // 错误日志 type:过滤类型logLevelFilter,将过滤error日志写进指定文件
+    errorLog: {
+      type: 'file',
+      filename: join(__dirname, '../../log/error.log'),
+    },
+
+    error: {
+      type: 'logLevelFilter',
+      level: 'error',
+      appender: 'errorLog',
+    },
+  },
+  // 不同等级的日志追加到不同的输出位置：appenders: ['out', 'allLog']
+  // categories 作为getLogger方法的键名对应
+  categories: {
     // appenders:采用的appender,取上面appenders项,level:设置级别
-        http: {
-            appenders: ["out", "httpLog"],
-            level: isDevelopment()?"debug":'info',
-        },
-        default: {
-            appenders: ["out", "allLog", "error","httpLog"],
-            level: isDevelopment()?"debug":'info',
-        }, 
-        error: {
-            appenders: ["out", "errorLog"],
-            level: isDevelopment()?"debug":'info',
-        },
+    http: {
+      appenders: ['out', 'httpLog'],
+      level: isDevelopment() ? 'debug' : 'info',
     },
+    default: {
+      appenders: ['out', 'allLog', 'error', 'httpLog'],
+      level: isDevelopment() ? 'debug' : 'info',
+    },
+    error: {
+      appenders: ['out', 'errorLog'],
+      level: isDevelopment() ? 'debug' : 'info',
+    },
+  },
 });
-
 
 const logger = log4js.getLogger('default');
 
 const errorLog = log4js.getLogger('error');
 
-const httpLog = log4js.getLogger("http");
+const httpLog = log4js.getLogger('http');
 
 // const httpLogger  = log4js.connectLogger(httpLog, { level: 'WARN' });
 
@@ -110,6 +109,4 @@ const httpLog = log4js.getLogger("http");
 //     };
 // };
 
-export  {logger,httpLog,errorLog};
-
-
+export { logger, httpLog, errorLog };

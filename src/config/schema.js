@@ -1,4 +1,2 @@
-
- const schemaConfig = {list:[]};
- export default schemaConfig;
- 
+const schemaConfig = { list: [] };
+export default schemaConfig;

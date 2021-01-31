@@ -1,4 +1,1 @@
-
-export default class Exception extends Error{
-    
-}
+export default class Exception extends Error {}

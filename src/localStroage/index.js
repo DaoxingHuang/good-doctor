@@ -1,23 +1,30 @@
-
-import JSONManager from "jsonfile";
+import JSONManager from 'jsonfile';
 // import SCHEMA from "../config/schema";
-import { join } from "path";
- class LocalJsonManager{
-     constructor(){
-         this.schemaLocation = 'schema.json';
-         this.schemas = this.readSchema();
-     }
+import { join } from 'path';
+class LocalJsonManager {
+  constructor() {
+    this.schemaLocation = 'schema.json';
+    this.path = join(__dirname, this.schemaLocation);
+    this.schemas = this.readSchema();
+  }
 
-     readSchema(){
-         const path = join(__dirname,this.schemaLocation);
-         const ret = JSONManager.readFileSync(path);
-         return ret;
-     }
+  refreshSchema() {
+    this.schemas = this.readSchema();
+  }
 
-     findSchemaInfo(id){
-         const find = this.schemas.find(item=>item.id === id);
-         return find || {}
-     }
+  readSchema() {
+    const ret = JSONManager.readFileSync(this.path);
+    return ret;
+  }
+
+  findSchemaInfo(id) {
+    const find = this.schemas.find(item => item.id === id);
+    return find || {};
+  }
+
+  writeSchema(schema) {
+    JSONManager.writeFileSync(this.path, schema);
+  }
 }
 
 export default new LocalJsonManager();
