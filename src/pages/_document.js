@@ -15,9 +15,10 @@ class CDocument extends Document {
     console.log(this.props);
     return (
       <Html>
-        <Head></Head>
+        <Head><link rel="icon" href="/static/favicon.ico"/>
+</Head>
         <body>
-          <Main></Main>
+          <Main style={{height:'100%'}}></Main>
           <NextScript></NextScript>
         </body>
       </Html>

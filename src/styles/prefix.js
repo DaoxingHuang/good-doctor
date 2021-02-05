@@ -1,0 +1,1 @@
+export const sortable_table_prefix_cls = 'sortable-table';

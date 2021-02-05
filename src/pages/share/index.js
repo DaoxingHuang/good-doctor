@@ -21,9 +21,9 @@ function Share(props) {
   const router = useRouter();
 
   useEffect(() => {
-    // const {schema} = props;
-    // schema && openApp(schema);
-    // !schema && router.push('/404');
+    const {schema} = props;
+    schema && openApp(schema);
+    !schema && router.push('/404');
   }, []);
   return (
     <>

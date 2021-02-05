@@ -1,63 +1,75 @@
-import Head from 'next/head';
-import Link from 'next/link';
+import { Layout, Menu, Breadcrumb } from 'antd';
+import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 
-export default function Home() {
+const { SubMenu } = Menu;
+const { Header, Content, Sider } = Layout;
+// const { Header, Content, Footer } = Layout;
+
+export default function Home(){
   return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <h1 className="title">
-          Welcome to{' '}
-          <Link href="/posts/first-post">
-            <a>this page!</a>
-          </Link>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a href="https://github.com/vercel/next.js/tree/master/examples" className="card">
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
-          </a>
-        </div>
-      </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+<Layout style={{height:'100%'}}>
+    <Header className="header">
+      <div className="logo" >MS</div>
+      {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+        <Menu.Item key="1">nav 1</Menu.Item>
+        <Menu.Item key="2">nav 2</Menu.Item>
+        <Menu.Item key="3">nav 3</Menu.Item>
+      </Menu> */}
+    </Header>
+    <Layout>
+      <Sider width={200} className="site-layout-background">
+        <Menu
+          mode="inline"
+          defaultSelectedKeys={['1']}
+          defaultOpenKeys={['sub1']}
+          style={{ height: '100%', borderRight: 0 }}
         >
-          Powered by <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
-
-      <style jsx>{`
+          <SubMenu key="sub1" icon={<UserOutlined />} title="分享">
+            <Menu.Item key="1">配置</Menu.Item>
+            {/* <Menu.Item key="2">option2</Menu.Item>
+            <Menu.Item key="3">option3</Menu.Item>
+            <Menu.Item key="4">option4</Menu.Item> */}
+          </SubMenu>
+          {/* <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
+            <Menu.Item key="5">option5</Menu.Item>
+            <Menu.Item key="6">option6</Menu.Item>
+            <Menu.Item key="7">option7</Menu.Item>
+            <Menu.Item key="8">option8</Menu.Item>
+          </SubMenu>
+          <SubMenu key="sub3" icon={<NotificationOutlined />} title="subnav 3">
+            <Menu.Item key="9">option9</Menu.Item>
+            <Menu.Item key="10">option10</Menu.Item>
+            <Menu.Item key="11">option11</Menu.Item>
+            <Menu.Item key="12">option12</Menu.Item>
+          </SubMenu> */}
+        </Menu>
+      </Sider>
+      <Layout style={{ padding: '0 24px 24px' }}>
+        {/* <Breadcrumb style={{ margin: '16px 0' }}>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>List</Breadcrumb.Item>
+          <Breadcrumb.Item>App</Breadcrumb.Item>
+        </Breadcrumb> */}
+        <Content
+          className="site-layout-background"
+          style={{
+            padding: 24,
+            margin: 0,
+            minHeight: 280,
+          }}
+        >
+          Content
+        </Content>
+      </Layout>
+    </Layout>
+    <style jsx>{`
+        .logo{
+          float: left;
+          width: 120px;
+          height: 31px;
+          margin: 16px 24px 16px 0;
+          background: rgba(255, 255, 255, 0.3);
+        }
         .container {
           min-height: 100vh;
           padding: 0 0.5rem;
@@ -201,6 +213,7 @@ export default function Home() {
           box-sizing: border-box;
         }
       `}</style>
-    </div>
+  </Layout>
   );
+  
 }

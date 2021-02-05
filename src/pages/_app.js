@@ -1,12 +1,13 @@
 import App from 'next/app';
 import { useEffect } from 'react';
 import 'antd/dist/antd.css';
-
+import 'antd/dist/antd.compact.css';
+import { Provider } from 'mobx-react';
+import store from "../stores";
 function CApp({ Component, pageProps }) {
   useEffect(() => {
-    console.log(pageProps);
   }, []);
-  return <Component {...pageProps}></Component>;
+  return <Provider {...store}><Component {...pageProps}></Component></Provider>;
 }
 
 export default CApp;
