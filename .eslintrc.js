@@ -19,16 +19,16 @@ module.exports = {
       version: '16.9',
     },
   },
-  parser: '@typescript-eslint/parser',
-  plugins: ['markdown', 'react', 'babel', 'jest', '@typescript-eslint', 'react-hooks', 'unicorn'],
+  // parser: '@typescript-eslint/parser',
+  plugins: ['markdown', 'react', 'babel', 'jest', 'react-hooks', 'unicorn'],
   // https://github.com/typescript-eslint/typescript-eslint/issues/46#issuecomment-470486034
   overrides: [
     {
       files: ['*.ts', '*.tsx','*.js'],
       rules: {
-        '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
+        // '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
         'no-unused-expressions': 'off',
-        '@typescript-eslint/no-unused-expressions': 2,
+        // '@typescript-eslint/no-unused-expressions': 2,
       },
     },
     {
@@ -124,9 +124,9 @@ module.exports = {
 
     // https://github.com/typescript-eslint/typescript-eslint/issues/2540#issuecomment-692866111
     'no-use-before-define': 0,
-    '@typescript-eslint/no-use-before-define': 2,
+    // '@typescript-eslint/no-use-before-define': 2,
     'no-shadow': 0,
-    '@typescript-eslint/no-shadow': [2, { ignoreTypeValueShadow: true }],
+    // '@typescript-eslint/no-shadow': [2, { ignoreTypeValueShadow: true }],
     // https://github.com/typescript-eslint/typescript-eslint/issues/2528#issuecomment-689369395
     'no-undef': 0,
   },

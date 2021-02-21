@@ -15,7 +15,6 @@ export function getPrefix(version){
 }
 
 export function getFullUrl(...args){
-    debugger;
     const argsAfter = args.map(item=>{
         if(item.startsWith(rootUrl)){
             const subString = item.substr(1,item.length-1);
@@ -25,7 +24,6 @@ export function getFullUrl(...args){
         return item;
     })
     const prefix = getPrefix(V1);
-    console.log(argsAfter, prefix);
     return prefix.concat(rootUrl).concat(argsAfter.join(rootUrl));
 }
 
