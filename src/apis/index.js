@@ -37,9 +37,7 @@ export function getLocalFullUrl(...args){
         return item;
     })
     const prefix = getPrefix(V1);
-    console.log(argsAfter, prefix);
     const finalUrl = `${localIP}:${Port}${prefix}${rootUrl}${argsAfter.join(rootUrl)}`;
-    console.log(finalUrl);
     return finalUrl
     // return localIP.concat(":").concat(`${Port}`).prefix.concat(rootUrl).concat(argsAfter.join(rootUrl));
 }
@@ -49,8 +47,8 @@ export const apis ={
     share:{
         entry:'/share',
         updateUrl : "/update" ,
-        refreshUrl : "/refresh" 
-    }
+        refreshUrl : "/refresh", 
+    },
 }
 
 // export default class Share {

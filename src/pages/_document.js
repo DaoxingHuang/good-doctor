@@ -18,8 +18,8 @@ class CDocument extends Document {
         <Head><link rel="icon" href="/static/favicon.ico"/>
 </Head>
         <body>
-          <Main style={{height:'100%'}}></Main>
-          <NextScript></NextScript>
+          <Main style={{height:'100%'}} />
+          <NextScript />
         </body>
       </Html>
     );

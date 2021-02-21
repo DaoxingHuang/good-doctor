@@ -1,6 +1,7 @@
 import JSONManager from 'jsonfile';
 // import SCHEMA from "../config/schema";
 import { join } from 'path';
+
 class LocalJsonManager {
   constructor() {
     this.schemaLocation = 'schema.json';

@@ -4,7 +4,7 @@ import { default as ctrs } from '../controllers';
 import { getPrefix } from "../apis";
 
 const router = new Router({
-  prefix: getPrefix('v1')
+  prefix: getPrefix('v1'),
 });
 
 /**

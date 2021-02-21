@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import Head from 'next/head';
 import {} from 'next/document';
-import Layout from '../components/layout';
 import { Component, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Layout from '../components/layout';
 import { SharePrinciples, ShareParams } from '../../util/types';
 import Schema from '../../config/schema';
 import { openApp } from '../../mobile/evocation';
-import { useRouter } from 'next/router';
 
 /**
  *
@@ -30,9 +30,7 @@ function Share(props) {
       <Head>
         {props.metas &&
           props.principles.map(item => {
-            const metas = Object.keys(props.metas).map(key => {
-              return <meta property={`${item}:${key}`} content={props.metas[key]}></meta>;
-            });
+            const metas = Object.keys(props.metas).map(key => <meta property={`${item}:${key}`} content={props.metas[key]} />);
             return metas;
           })}
         {/* <meta property="og:title" content="Title Here" />
@@ -48,7 +46,7 @@ function Share(props) {
 export default Share;
 
 export const getServerSideProps = ctx => {
-  const query = ctx.query;
+  const {query} = ctx;
   const p = query[ShareParams.Principle] || SharePrinciples.OG;
   const t = query[ShareParams.Title];
   const id = query[ShareParams.ID];

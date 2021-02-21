@@ -1,9 +1,9 @@
 /* eslint-disable new-cap */
 import * as HttpStatus from 'http-status-codes';
+import { isNumber, isDate } from 'lodash';
 import Exception from '../util/exception';
 import { isArray, isObj } from '../util/typeCheck';
 import { httpLog as log } from '../util/log';
-import { isNumber, isDate } from 'lodash';
 import { APIType } from '../decorator';
 
 /**
@@ -13,9 +13,9 @@ import { APIType } from '../decorator';
  * @returns
  */
 export default handler => async (ctx, next) => {
-  const type = handler.type;
+  const {type} = handler;
   const { params, query, body } = ctx.request;
-  let paramsAll = { ...params, ...query, body };
+  const paramsAll = { ...params, ...query, body };
   const ret = await handler(paramsAll, ctx);
   ctx.res.status = HttpStatus.OK;
   ctx.body = { status: HttpStatus.OK, data: ret, info: 'Successful' };

@@ -18,7 +18,7 @@ String.prototype.replaceAll = function (searchValue, replaceValue) {
 // / 格式化字符串
 // / </summary>
 String.prototype.format = function () {
-  const regexp = /\{(\d+)\}/g;
+  const regexp = /{(\d+)}/g;
   const args = arguments;
   const result = this.replace(regexp, (m, i, o, n) => args[i]);
   return result.replaceAll('%', String.EscapeChar);

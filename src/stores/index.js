@@ -5,7 +5,7 @@ import share from "./share";
 // enableStaticRendering(typeof window === 'undefined');
 
 const store = {
-    share
+    share,
 }
 
 export default  store;

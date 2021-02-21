@@ -10,7 +10,7 @@ const devMiddleware = (compiler, opts) => {
             },
             setHeader: (name, value) => {
                 ctx.set(name, value)
-            }
+            },
         }, next)
     }
 }

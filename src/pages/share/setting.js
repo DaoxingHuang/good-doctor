@@ -1,21 +1,21 @@
-import Layout from "../components/layout";
-import {default as SortableTable}  from "../components/table/SortableTable";
 import { useState, Fragment, Component, useEffect } from 'react';
 import { Button, Radio, Table, Typography, Space,Form,
-    Modal,Tooltip , Tag, Input, Popconfirm} from 'antd';
-import { DownloadOutlined,AndroidOutlined, AndroidFilled,AppleFilled ,ApiFilled} from '@ant-design/icons';
+    Modal,Tooltip , Tag, Input, Popconfirm, Row, Col, Divider } from 'antd';
+import { DownloadOutlined,AndroidOutlined, AndroidFilled,AppleFilled ,ApiFilled, MenuOutlined, UserOutlined, LockOutlined ,FileAddFilled} from '@ant-design/icons';
 import { sortableContainer, sortableElement, sortableHandle } from 'react-sortable-hoc';
-import { MenuOutlined, UserOutlined, LockOutlined ,FileAddFilled} from '@ant-design/icons';
+
 import arrayMove from 'array-move';
-import { ShareService } from "../../services";
 import { observer,inject } from "mobx-react";
-import { Row, Col, Divider } from 'antd';
+import { ShareService } from "../../services";
+
+import {default as SortableTable}  from "../components/table/SortableTable";
+import Layout from "../components/layout";
 
 // import { Share } from "../../stores";
 
 
 // AndroidOutlined
-{/* <AppleOutlined /> <AndroidFilled /> <AppleFilled />*/}
+{/* <AppleOutlined /> <AndroidFilled /> <AppleFilled /> */}
 // const store = new Share();
 function Setting(props) {
 
@@ -101,44 +101,37 @@ function Setting(props) {
           title: 'Link',
           dataIndex: 'schema',
           editAble:true,
-          render:(row,rc)=>{
-            return (
+          render:(row,rc)=>(
              <Tooltip title={rc.schema} color="#fc7166">
                    <Tag icon={<ApiFilled />}  color="volcano">gdind</Tag>
               </Tooltip>
-            )
-        }
+            ),
         },
         {
             title: 'IOS',
             dataIndex: 'ios',
             editAble:true,
-            render:(row,rc)=>{
-                return (
+            render:(row,rc)=>(
                  <Tooltip title={rc.ios} color="#fc7166">
                        <Tag   icon={<AppleFilled />} color="volcano">itunes</Tag>
                   </Tooltip>
-                )
-            }
+                ),
           },
           {
             title: 'Android',
             dataIndex: 'android',
             editAble:true,
-            render:(row,rc)=>{
-                return (
+            render:(row,rc)=>(
                  <Tooltip title={rc.android} color="#fc7166">
                        <Tag  icon={<AndroidFilled />} color="volcano">google store</Tag>
                   </Tooltip>
-                )
-            }
+                ),
           },
           {
             title: 'operation',
             dataIndex: 'operation',
             excluded:true,
-            render: (row, record) => {
-              return (
+            render: (row, record) => (
                 <Space>
                     <Typography.Link onClick={() => {
                         form.setFieldsValue(record);
@@ -155,8 +148,7 @@ function Setting(props) {
                         <Typography.Link >Delete</Typography.Link>
                     </Popconfirm>
                 </Space>
-                )
-            },
+                ),
           },
       ];
 
@@ -168,7 +160,7 @@ function Setting(props) {
         columns ={columns}
         rowKey='id'
       />
-      <br></br>
+      <br />
          <Row justify="end">
          <Button onClick={()=>{
             setVisible(true);
@@ -187,15 +179,13 @@ function Setting(props) {
           cancelText="Cancel" >
               <Form form={form} layout='horizontal'  name="horizontal_login"  {...formLayout}  onFinish={onFinish}>
                   {
-                      columns.filter(item=>!item.excluded).map(item=>{
-                        return(        
+                      columns.filter(item=>!item.excluded).map(item=>(        
                             <Form.Item key={`${item.dataIndex}${item.title}`} initialValue='' style={!item.editAble?{display:"none"}:''}
                                 label={item.title}
                                 name={item.dataIndex}
                                 rules={[{ required: item.editAble, message: `Please enter ${item.title.toLowerCase()}` }]}>
                                 <Input />
-                            </Form.Item>)
-                      })
+                            </Form.Item>))
                   }
                 {/* <Form.Item
                     name="username"
