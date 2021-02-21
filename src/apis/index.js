@@ -1,4 +1,4 @@
-export const v2 = 'v2';
+export const v2 = 'v3';
 
 export const V1 = 'v1';
 
