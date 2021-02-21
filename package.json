@@ -74,7 +74,7 @@
   ],
   "husky":{
     "hooks":{
-      "pre-commit": "lint:script"
+      "pre-commit": "npm run lint:script"
     }
   },
   "author": "Daoxing.Huang",
