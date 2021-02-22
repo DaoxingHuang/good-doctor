@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import { sortableContainer, sortableElement, sortableHandle } from 'react-sortable-hoc';
-import { MenuOutlined } from '@ant-design/icons';
+import React, { useEffect, useState } from "react";
+import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import { Table } from 'antd';
 import './sortabletable.module.less';

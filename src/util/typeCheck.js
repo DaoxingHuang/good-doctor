@@ -47,4 +47,4 @@ export const isFalse = o => {
   return false;
 };
 
-const isTrue = o => !this.isFalse(o);
+export const isTrue = o => !this.isFalse(o);

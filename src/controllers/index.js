@@ -1,3 +1,3 @@
-import Share from './share';
+import Share from './share';  
 
 export default { Share };

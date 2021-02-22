@@ -11,7 +11,6 @@ import LS from './localStroage';
 const nextService = next({ dev: isDevelopment() });
 const handle = nextService.getRequestHandler();
 const app = new Koa();
-console.log(process.env.NODE_ENV);
 if(isDevelopment()){
      
     // const webpack = require("webpack");
@@ -41,7 +40,7 @@ nextService.prepare().then(() => {
   // app.context.loaclMemory = {schemaConfig: LS.schemas};
 
   // app.context.state.localMemory = {}
-  app.use(async (ctx, next) => {
+  app.use(async (ctx) => {
     // use req state pass meomry
     await handle(ctx.req, ctx.res);
     ctx.respond = false;

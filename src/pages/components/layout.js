@@ -3,10 +3,10 @@
 // export default function Layout({ children }) {
 //   return <div className={styles.container}>{children}</div>;
 // }
+import React from "react";
 
-import { Layout, Menu, Breadcrumb } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
-import styles from './layout.module.css';
+import { Layout, Menu } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;

@@ -1,5 +1,4 @@
-import * as HttpStatus from 'http-status-codes';
-import { isArray, isObj, isString, isFunction } from '../util/typeCheck';
+import { isFunction } from '../util/typeCheck';
 import { requstHandler, paramsHandler } from '../middlewares';
 
 /**

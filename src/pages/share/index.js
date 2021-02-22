@@ -1,11 +1,8 @@
-import Link from 'next/link';
+import React, { useEffect } from 'react';
+
 import Head from 'next/head';
-import {} from 'next/document';
-import { Component, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Layout from '../components/layout';
 import { SharePrinciples, ShareParams } from '../../util/types';
-import Schema from '../../config/schema';
 import { openApp } from '../../mobile/evocation';
 
 /**

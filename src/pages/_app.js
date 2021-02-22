@@ -1,4 +1,3 @@
-import App from 'next/app';
 import React, { useEffect } from 'react';
 import 'antd/dist/antd.css';
 import 'antd/dist/antd.compact.css';

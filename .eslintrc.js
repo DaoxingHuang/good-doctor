@@ -19,7 +19,12 @@ module.exports = {
       version: '17.0.0',
     },
   },
-  // parser: '@typescript-eslint/parser',
+  parser: 'babel-eslint',
+  parserOptions: {
+    ecmaFeatures: {
+      legacyDecorators: true
+    }
+  },
   plugins: ['markdown', 'react', 'babel', 'jest', 'react-hooks', 'unicorn'],
   // https://github.com/typescript-eslint/typescript-eslint/issues/46#issuecomment-470486034
   overrides: [
@@ -129,6 +134,8 @@ module.exports = {
     // '@typescript-eslint/no-shadow': [2, { ignoreTypeValueShadow: true }],
     // https://github.com/typescript-eslint/typescript-eslint/issues/2528#issuecomment-689369395
     'no-undef': 0,
+    'import/no-unresolved': [1, { ignore: ['^@/'] }],
+    "class-methods-use-this": "off",
   },
   globals: {
     gtag: true,

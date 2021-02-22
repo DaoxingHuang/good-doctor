@@ -12,15 +12,15 @@ export const deviceBrowser = () => {
     trident: u.indexOf('Trident') > -1, // IE
     presto: u.indexOf('Presto') > -1, // opera
     webKit: u.indexOf('AppleWebKit') > -1, // safari or chroome
-    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, // firefox
+    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') === -1, // firefox
     mobile: !!u.match(/AppleWebKit.*Mobile.*/), // mobile
     ios: !!u.match(/\(i[^;]+;( U;)? CPU.Mac OS X/), // ios
     android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, // android or uc
     iPhone: u.indexOf('iPhone') > -1, // iphone
     iPad: u.indexOf('iPad') > -1, // iPad
-    webApp: u.indexOf('Safari') == -1, // Safari
+    webApp: u.indexOf('Safari') === -1, // Safari
     weixin: u.indexOf('MicroMessenger') > -1, // weixin
-    qq: u.match(/\sqq/i) == ' qq', // qq
+    qq: u.match(/\sqq/i) === ' qq', // qq
   };
 };
 

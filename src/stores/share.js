@@ -1,6 +1,5 @@
-import { observable, computed, action ,makeObservable } from "mobx";
+import { observable, action ,makeObservable } from "mobx";
 import { ShareService } from "../services";
-import { useMemo } from "react";
 
 class Share {
 
@@ -17,9 +16,8 @@ class Share {
   }
 
   @action async updateSchema(schema){
-    debugger;
     const tempSchemas = [...this.schemas]
-    const id = schema.id;
+    const {id} = schema;
     if(id){
       const index = tempSchemas.findIndex(item=>item.id === id);
       tempSchemas.splice(index,1,schema);

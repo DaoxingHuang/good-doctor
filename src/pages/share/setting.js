@@ -1,39 +1,31 @@
-import { useState, Fragment, Component, useEffect } from 'react';
-import { Button, Radio, Table, Typography, Space,Form,
-    Modal,Tooltip , Tag, Input, Popconfirm, Row, Col, Divider } from 'antd';
-import { DownloadOutlined,AndroidOutlined, AndroidFilled,AppleFilled ,ApiFilled, MenuOutlined, UserOutlined, LockOutlined ,FileAddFilled} from '@ant-design/icons';
-import { sortableContainer, sortableElement, sortableHandle } from 'react-sortable-hoc';
 
-import arrayMove from 'array-move';
+import React, { useState, useEffect } from 'react';
+import { Button, Typography, Space,Form,
+    Modal,Tooltip , Tag, Input, Popconfirm, Row } from 'antd';
+import {AndroidFilled,AppleFilled ,ApiFilled, MenuOutlined ,FileAddFilled} from '@ant-design/icons';
+import {sortableHandle } from 'react-sortable-hoc';
+
 import { observer,inject } from "mobx-react";
-import { ShareService } from "../../services";
 
-import {default as SortableTable}  from "../components/table/SortableTable";
+import SortableTable  from "../components/table/SortableTable";
 import Layout from "../components/layout";
 
 // import { Share } from "../../stores";
 
 
 // AndroidOutlined
-{/* <AppleOutlined /> <AndroidFilled /> <AppleFilled /> */}
 // const store = new Share();
 function Setting(props) {
 
     const  {share} = props;
-    const  {schemas, title} = share;
+    const  {schemas} = share;
     const [visible,setVisible] = useState(false);
     const [form] = Form.useForm();
     const [, forceUpdate] = useState({});
-    const [selectedItem,setSelectedItem] = useState({});
 
     const formLayout = {
         labelCol: { span: 4 },
         wrapperCol: { span: 18 },
-      }
-
-      const formBtnLayout = {
-        labelCol: { span: 14 },
-        wrapperCol: { span: 4 },
       }
 
     useEffect(() => {
