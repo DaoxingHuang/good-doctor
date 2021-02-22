@@ -20,6 +20,6 @@ String.prototype.replaceAll = function (searchValue, replaceValue) {
 String.prototype.format = function () {
   const regexp = /{(\d+)}/g;
   const args = arguments;
-  const result = this.replace(regexp, (m, i, o, n) => args[i]);
+  const result = this.replace(regexp, (m, i) => args[i]);
   return result.replaceAll('%', String.EscapeChar);
 };

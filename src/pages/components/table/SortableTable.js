@@ -3,7 +3,7 @@ import { sortableContainer, sortableElement } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import { Table } from 'antd';
 import './sortabletable.module.less';
-import { sortable_table_prefix_cls } from "../../../styles/prefix";
+import { sortable_table_prefix_cls as sortableTablePrefixCls } from "../../../styles/prefix";
 
 export default function SortableTable(props){
 
@@ -22,7 +22,7 @@ export default function SortableTable(props){
         <SortableContainer
           useDragHandle
           disableAutoscroll
-          helperClass={`${sortable_table_prefix_cls}-row-dragging`}
+          helperClass={`${sortableTablePrefixCls}-row-dragging`}
           onSortEnd={onSortEnd}
           {...props}
         />

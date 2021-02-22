@@ -5,7 +5,7 @@
  */
 
 /**
- * 参数验证中间件
+ * 参数验证中间件 className, method
  * @function
  * @instance
  * @export
@@ -13,6 +13,6 @@
  * @returns {Function} 消息中间件
  */
 
-export default function paramsHandler(className, method) {
+export default function paramsHandler() {
   return [];
 }

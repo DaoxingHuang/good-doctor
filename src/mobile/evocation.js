@@ -1,6 +1,6 @@
 import { deviceBrowser } from '../util/nav';
 
-export const openApp = schema => {
+export default  openApp = schema => {
   const os = deviceBrowser();
   let cSchema = schema.schema;
   const searchParams = window.location.search;

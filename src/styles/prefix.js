@@ -1,1 +1,4 @@
-export const sortable_table_prefix_cls = 'sortable-table';
+// wil more varibles , disable this rule now.
+// eslint-disable-next-line import/prefer-default-export
+export const sortableTablePrefixCls = 'sortable-table';
+
