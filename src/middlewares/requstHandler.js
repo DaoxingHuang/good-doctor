@@ -7,7 +7,7 @@ import * as HttpStatus from 'http-status-codes';
  * @param {function} handler
  * @returns
  */
-export default handler => async (ctx) => {
+export default handler => async ctx => {
   const { params, query, body } = ctx.request;
   const paramsAll = { ...params, ...query, body };
   const ret = await handler(paramsAll, ctx);

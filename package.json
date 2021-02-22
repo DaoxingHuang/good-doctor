@@ -81,7 +81,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:script"
+      "pre-commit": ["prettier", "lint:script"]
     }
   },
   "author": "Daoxing.Huang",

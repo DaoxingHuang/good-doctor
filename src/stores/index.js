@@ -1,11 +1,11 @@
-import share from "./share";
+import share from './share';
 
 // import { enableStaticRendering } from "mobx-react"
 // // enableStaticRendering(true);
 // enableStaticRendering(typeof window === 'undefined');
 
 const store = {
-    share,
-}
+  share,
+};
 
-export default  store;
+export default store;

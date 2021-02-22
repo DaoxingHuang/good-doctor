@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { SharePrinciples, ShareParams } from '../../util/types';
-import  openApp  from '../../mobile/evocation';
+import openApp from '../../mobile/evocation';
 
 /**
  *
@@ -18,7 +18,7 @@ function Share(props) {
   const router = useRouter();
 
   useEffect(() => {
-    const {schema} = props;
+    const { schema } = props;
     schema && openApp(schema);
     !schema && router.push('/404');
   }, []);
@@ -27,7 +27,9 @@ function Share(props) {
       <Head>
         {props.metas &&
           props.principles.map(item => {
-            const metas = Object.keys(props.metas).map(key => <meta property={`${item}:${key}`} key={key} content={props.metas[key]} />);
+            const metas = Object.keys(props.metas).map(key => (
+              <meta property={`${item}:${key}`} key={key} content={props.metas[key]} />
+            ));
             return metas;
           })}
         {/* <meta property="og:title" content="Title Here" />
@@ -43,7 +45,7 @@ function Share(props) {
 export default Share;
 
 export const getServerSideProps = ctx => {
-  const {query} = ctx;
+  const { query } = ctx;
   const p = query[ShareParams.Principle] || SharePrinciples.OG;
   const t = query[ShareParams.Title];
   const id = query[ShareParams.ID];
@@ -54,7 +56,7 @@ export const getServerSideProps = ctx => {
   delete query[ShareParams.DESC];
 
   const schemas = ctx.req.state.loaclMemory.schemaConfig || [];
-  // can not use eslint === 
+  // can not use eslint ===
   // eslint-disable-next-line eqeqeq
   const schema = schemas.find(item => item.id == id);
 

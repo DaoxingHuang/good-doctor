@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class CDocument extends Document {
@@ -16,10 +16,11 @@ class CDocument extends Document {
     console.log(this.props);
     return (
       <Html>
-        <Head><link rel="icon" href="/static/favicon.ico"/>
-</Head>
+        <Head>
+          <link rel="icon" href="/static/favicon.ico" />
+        </Head>
         <body>
-          <Main style={{height:'100%'}} />
+          <Main style={{ height: '100%' }} />
           <NextScript />
         </body>
       </Html>

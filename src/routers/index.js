@@ -1,6 +1,8 @@
 import Router from 'koa-router';
 import { controllers } from '../decorator';
-import { getPrefix } from "../apis";
+import { getPrefix } from '../apis';
+// eslint-disable-next-line no-unused-vars
+import ctxs from '../controllers';
 
 const router = new Router({
   prefix: getPrefix('v1'),
