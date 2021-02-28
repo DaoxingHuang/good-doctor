@@ -1,5 +1,7 @@
 import Koa from 'koa';
 import next from 'next';
+import StaticServ from 'koa-static';
+
 // const next = require('next')
 
 import bodyparser from 'koa-bodyparser';
@@ -7,6 +9,7 @@ import compress from 'koa-compress';
 import route from './routers';
 import { isDevelopment } from './util/env';
 import LS from './localStroage';
+import {staticDir} from "./config/contants";
 
 const nextService = next({ dev: isDevelopment() });
 const handle = nextService.getRequestHandler();
@@ -27,6 +30,8 @@ const constRouter = route();
 app.use(compress());
 app.use(bodyparser());
 app.use(constRouter.routes()).use(constRouter.allowedMethods());
+
+app.use(StaticServ(staticDir));
 
 app.use(async (ctx, next) => {
   ctx.req.state = {};

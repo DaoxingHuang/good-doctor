@@ -5,11 +5,13 @@
 // 使用 next-compose-plugins 实现多插件配置 https://www.npmjs.com/package/next-compose-plugins
 // const withPlugins = require('next-compose-plugins');
 
-const withPlugins = require('next-compose-plugins');
+// const withPlugins = require('next-compose-plugins');
 const withLess = require('@zeit/next-less');
 const withCSS = require('@zeit/next-css')
 
-module.exports = withLess(withCSS({}))
+module.exports = withLess(withCSS({
+    
+}))
 // function getLocalIdent(loaderContext, localIdentName, localName, options) {
 //   if (!options.context) {
 //     if (loaderContext.rootContext) {

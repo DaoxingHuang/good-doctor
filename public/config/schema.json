@@ -1,0 +1,11 @@
+[
+  {
+    "id": 3,
+    "name": "印尼12345",
+    "schema": "gdind://com.pajk.idpersonaldoctor/plugin-share",
+    "ios": "https://itunes.apple.com/app/id1531980757",
+    "android": "https://play.google.com/store/apps/details?id=com.pajk.idpersonaldoc"
+  },
+  { "id": 6, "name": "u1", "schema": "u2", "ios": "u", "android": "u" },
+  { "id": 7, "name": "u1222", "schema": "u2", "ios": "u", "android": "u" }
+]
